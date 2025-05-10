@@ -1,3 +1,14 @@
+.team-member-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+
 :root {
     --primary-color: #0066cc;
     --secondary-color: #004999;
