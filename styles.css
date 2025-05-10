@@ -1,22 +1,16 @@
-.team-member-image {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-
-
 :root {
-    --primary-color: #0066cc;
-    --secondary-color: #004999;
-    --text-color: #333;
-    --background-light: #f8f9fa;
+    --primary-color: #2563eb;
+    --secondary-color: #3b82f6;
+    --accent-color: #06b6d4;
+    --text-color: #1f2937;
+    --text-light: #6b7280;
+    --background-light: #f1f5f9;
+    --background-card: rgba(255, 255, 255, 0.95);
     --white: #ffffff;
-    --shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -33,6 +27,7 @@ body {
     font-family: 'Rubik', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background-color: var(--background-light);
 }
 
 .container {
@@ -44,7 +39,8 @@ body {
 
 /* Header Styles */
 .main-header {
-    background: var(--white);
+    background: var(--background-card);
+    backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     position: fixed;
     width: 100%;
@@ -81,6 +77,23 @@ body {
     color: var(--text-color);
     font-weight: 500;
     transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gradient);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
@@ -89,7 +102,7 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--gradient);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -98,131 +111,202 @@ body {
     text-align: center;
     padding: 4rem 1rem;
     margin-top: 70px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    animation: moveBackground 30s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
 }
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2rem;
-    background: var(--white);
+    padding: 1rem 2.5rem;
+    background: var(--background-card);
     color: var(--primary-color);
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: 500;
     transition: var(--transition);
+    backdrop-filter: blur(10px);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-strong);
 }
 
 /* Section Styles */
 .about-section, .mission-section, .team-section {
     background: var(--background-light);
-    padding: 4rem 0;
-    text-align: center;
+    padding: 6rem 0;
+    position: relative;
 }
 
 .areas-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: var(--white);
+    position: relative;
 }
 
 section h2 {
-    color: var(--primary-color);
+    color: var(--text-color);
     margin-bottom: 2rem;
     font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
 }
 
 /* Areas Grid */
 .areas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 1rem;
 }
 
 .area-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 10px;
+    background: var(--background-card);
+    padding: 2.5rem;
+    border-radius: 16px;
     box-shadow: var(--shadow);
     transition: var(--transition);
     text-align: center;
+    backdrop-filter: blur(10px);
 }
 
 .area-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
 }
 
 .area-card h3 {
-    color: var(--primary-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 /* Mission Values */
 .mission-values {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
 
 .value-item {
-    padding: 1.5rem;
-    background: var(--white);
-    border-radius: 10px;
+    padding: 2rem;
+    background: var(--background-card);
+    border-radius: 16px;
     box-shadow: var(--shadow);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.value-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
 }
 
 /* Team Section */
 .team-members {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
 }
 
 .team-member {
-    background: var(--white);
+    background: var(--background-card);
     padding: 2.5rem;
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: var(--shadow);
-    text-align: left;
+    text-align: center;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
 }
 
 .team-member h3 {
-    color: var(--primary-color);
+    color: var(--text-color);
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .team-member-image {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
+    border-radius: 16px;
+    margin: 0 auto 1.5rem;
     box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.team-member:hover .team-member-image {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-strong);
 }
 
 .member-bio {
     font-size: 1rem;
     line-height: 1.7;
+    color: var(--text-light);
+    text-align: left;
 }
 
 .member-bio p {
@@ -243,50 +327,57 @@ section h2 {
 
 .member-bio li::before {
     content: "•";
-    color: var(--primary-color);
+    color: var(--accent-color);
     font-weight: bold;
     margin-right: 0.5rem;
 }
 
 /* Contact Section */
 .contact-section {
-    background: var(--background-light);
-    padding: 4rem 0;
+    background: var(--white);
+    padding: 6rem 0;
     text-align: center;
+    position: relative;
 }
 
 .contact-info {
     max-width: 600px;
     margin: 0 auto;
+    background: var(--background-card);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
 }
 
 .contact-details {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .contact-details a {
     color: var(--primary-color);
     text-decoration: none;
     transition: var(--transition);
+    font-weight: 500;
 }
 
 .contact-details a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 /* Footer */
 .main-footer {
-    background: var(--primary-color);
+    background: var(--text-color);
     color: var(--white);
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -297,8 +388,8 @@ section h2 {
     }
 }
 
-.hero-content, .area-card, .value-item, .team-stat {
-    animation: fadeIn 0.8s ease-out forwards;
+.hero-content, .area-card, .value-item, .team-member {
+    animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* Responsive Design */
@@ -315,14 +406,19 @@ section h2 {
     }
 
     .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section h2 {
         font-size: 2rem;
     }
 
-    .areas-grid, .mission-values, .team-highlights {
-        grid-template-columns: 1fr;
+    .team-member {
+        padding: 2rem;
     }
 
-    section h2 {
-        font-size: 2rem;
+    .team-member-image {
+        width: 180px;
+        height: 180px;
     }
 }
