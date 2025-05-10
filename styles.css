@@ -1,16 +1,69 @@
+/* Light theme (default) */
 :root {
+    /* Core colors */
     --primary-color: #2563eb;
     --secondary-color: #3b82f6;
     --accent-color: #06b6d4;
+    
+    /* Text colors */
     --text-color: #1f2937;
     --text-light: #6b7280;
-    --background-light: #f1f5f9;
+    
+    /* Background colors */
+    --background-main: #f1f5f9;
     --background-card: rgba(255, 255, 255, 0.95);
+    --background-footer: #1f2937;
     --white: #ffffff;
+    
+    /* Effects */
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.12);
     --gradient: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    /* Core colors - slightly adjusted for dark mode */
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --accent-color: #22d3ee;
+    
+    /* Text colors */
+    --text-color: #f3f4f6;
+    --text-light: #9ca3af;
+    
+    /* Background colors */
+    --background-main: #111827;
+    --background-card: rgba(31, 41, 55, 0.95);
+    --background-footer: #0f172a;
+    --white: #1f2937;
+    
+    /* Effects - adjusted for dark mode */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: var(--background-card);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    background: var(--gradient);
+    color: white;
 }
 
 * {
@@ -27,7 +80,8 @@ body {
     font-family: 'Rubik', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-light);
+    background-color: var(--background-main);
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -70,6 +124,7 @@ body {
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -107,7 +162,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--white);
+    color: #ffffff;
     text-align: center;
     padding: 4rem 1rem;
     margin-top: 70px;
@@ -173,7 +228,7 @@ body {
 
 /* Section Styles */
 .about-section, .mission-section, .team-section {
-    background: var(--background-light);
+    background: var(--background-main);
     padding: 6rem 0;
     position: relative;
 }
@@ -297,9 +352,23 @@ section h2::after {
     transition: var(--transition);
 }
 
+/* Specific styles for Oded's image */
+.team-member:nth-child(2) .team-member-image {
+    width: 220px;
+    height: 260px;
+    object-position: 50% 15%;
+    object-fit: cover;
+    transform: scale(1.1);
+}
+
 .team-member:hover .team-member-image {
-    transform: scale(1.02);
+    transform: scale(1.12);
     box-shadow: var(--shadow-strong);
+}
+
+/* Override hover effect for Oded's image specifically */
+.team-member:nth-child(2):hover .team-member-image {
+    transform: scale(1.15);
 }
 
 .member-bio {
@@ -370,8 +439,8 @@ section h2::after {
 
 /* Footer */
 .main-footer {
-    background: var(--text-color);
-    color: var(--white);
+    background: var(--background-footer);
+    color: #ffffff;
     text-align: center;
     padding: 2rem 0;
 }
@@ -420,5 +489,15 @@ section h2::after {
     .team-member-image {
         width: 180px;
         height: 180px;
+    }
+
+    .team-member:nth-child(2) .team-member-image {
+        width: 180px;
+        height: 220px;
+        transform: scale(1.05); /* Slightly reduced scale for mobile */
+    }
+    
+    .theme-toggle {
+        margin-top: 1rem;
     }
 }

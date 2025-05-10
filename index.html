@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofek Technologies | Advanced Technology Solutions</title>
     <meta name="description" content="Ofek Technologies provides advanced technological solutions for businesses. Experts in technology consulting, information security, and IT solutions.">
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +24,9 @@
                 <a href="#mission">Our Mission</a>
                 <a href="#team">Our Team</a>
                 <a href="#contact">Contact</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    🌙 Dark Mode
+                </button>
             </div>
         </nav>
     </header>
@@ -118,7 +123,7 @@
                     </div>
                     <div class="team-member">
                         <h3>Oded Rotem - CTO</h3>
-                        <img src="images/oded-rotem.jpg" alt="Oded Rotem - CTO of Ofek Technologies" class="team-member-image">
+                        <img src="images/oded-rotem.jpg" alt="Oded Rotem - CTO of Ofek Technologies" class="team-member-image" style="object-position: top center">
                         <div class="member-bio">
                             <p>A seasoned researcher and engineer in computer vision, deep learning, and electro-optics. Oded holds a B.Sc. in Physics and an M.Sc. in Electro-Optical materials from TAU and BGU.</p>
                             <p>Current Focus:</p>
@@ -162,5 +167,6 @@
             <p>&copy; 2024 Ofek Technologies. All rights reserved.</p>
         </div>
     </footer>
+    <script src="theme.js"></script>
 </body>
 </html>
